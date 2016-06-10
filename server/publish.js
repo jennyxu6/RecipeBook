@@ -3,3 +3,11 @@ Meteor.publish('recipes', function () {
     author: this.userId
   });
 });
+
+Meteor.publish('singleRecipe', function (id) {
+  check(id, String);
+  return Recipes.find({
+    author: this.userId,
+    _id: id
+  });
+});
